@@ -1,6 +1,5 @@
 package com.example.demo.entities;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,7 +23,7 @@ public class EmailToken {
     @Column(nullable = false)
     private LocalDateTime createdDate;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne
     @JoinColumn(
             nullable = false,
             name = "id"
@@ -36,5 +35,9 @@ public class EmailToken {
         this.createdDate=LocalDateTime.now();
         this.expiryDate = createdDate.plusHours(2);
         this.user = user;
+    }
+
+    public EmailToken() {
+
     }
 }
